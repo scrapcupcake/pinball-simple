@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>pinball-simple</title>
+  </head>
+  <style>
+  #ScrollBackground {
+    background-image: url(./dist/topography.svg);
+    background-repeat: repeat;
+    transition: background-position 1s ease;
+    background-position: 1px 1px;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+  #Centered {
+    position: absolute;
+    left: calc(50% - 1.5rem);
+    top: calc(50% - 1.5rem);
+    width: 3rem;
+    height: 3rem;
+    font-size: 3em;
+  }
+  </style>
+  <script>
+    const moveBackground = (x,y) => {
+      let target = document.getElementById("ScrollBackground");
+      let finalX = Number.parseInt(0+target.style.backgroundPositionX) + x;
+      let finalY = Number.parseInt(0+target.style.backgroundPositionY) + y;
+      console.log("Gonna move target to", finalX, finalY, target);
+      target.style.backgroundPosition = `${finalX}px ${finalY}px`;
+    }
+  </script>
+  <body>
+    <div id="ScrollBackground" onClick="moveBackground(100,100)">
+        <div id="Centered">🦍</div>
+    </div>
+  </body>
+</html>
